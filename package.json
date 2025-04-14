@@ -1,0 +1,26 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "description": "Project to Learn Data Structures & Algorithms ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Priyanshu-21/Learning-DSA.git"
+  },
+  "keywords": [
+    "DSA"
+  ],
+  "author": "Priyanshu Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Priyanshu-21/Learning-DSA/issues"
+  },
+  "homepage": "https://github.com/Priyanshu-21/Learning-DSA#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}
