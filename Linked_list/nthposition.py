@@ -4,7 +4,18 @@
 - Searching the linked list till nth position 
 - prev counter takes values of previous node 
 - prev.next = current.next (when node is found in linked list)
+
+2. Insert node at nth posittion
+- Search of the k node in the linked list 
+- Now temp = current.next is storing the current next node reference 
+- current.next = newNode.next is now linked to newNode reference 
+- newNode.next = temp is now linked to current.next node
 '''
+'''
+Time Complexity: - O (k) where k is the serach Node in ll
+Space Complexity: - O (N)
+'''
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +46,18 @@ class LinkedList:
         prev.next = curr.next # This condition fails to delete node at 1st Position
 
         return self.head
+    
+    def insertAtNpos(self, k, data):
+        # Search the node in ll 
+        newNode = Node(data)
+        current = self.head
+        while (not(current == None) and not(current.data == k)):
+            current = current.next
+        temp = current.next
+        current.next = newNode
+        newNode.next = temp
+
+        return self.head
 
     def traverse(self):
         current = self.head
@@ -50,5 +73,7 @@ if __name__ == "__main__":
     ll.insertAtBegin(10)
     # Delete at nth Position
     ll.delete(20) # we can't delete at the 1st positon of the linked list 
+    # Insert at nth Position 
+    ll.insertAtNpos(50, 100) # (key, data)
     # Now traverse to get linked list 
     ll.traverse()
