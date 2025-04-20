@@ -1,6 +1,11 @@
 # Implementation for Insert and Delete at nth position 
 '''
 1. Insert at nth position 
+    TC: O (k) --> K is the node after which we insert the new node
+    SC: O (N)
+2. Delete at nth position 
+    TC: O (k) --> K is the node after which we insert the new node
+    SC: O (N)
 '''
 
 class Node: 
@@ -41,6 +46,22 @@ class DoublyLinkedList:
         newNode.next = temp
 
         return self.head
+    
+    def deleteAtNpos(self, key):
+        current = self.head
+        previous = None 
+        while (not(current == None) and not(current.data == key)):
+            previous = current
+            current = current.next
+        
+        nextNode = current.next
+
+        # Change the reference of the node 
+        previous.next = nextNode
+        nextNode.prev = current.next
+
+        return self.head
+
         
     def traverse(self):
         current = self.head
@@ -59,4 +80,7 @@ if __name__ == "__main__":
     dll.traverse()
     print("\nInsert at nth position: - \n")
     dll.insertAtNpos(30, 35)
+    dll.traverse()
+    print("\nDelete at nth position: - \n")
+    dll.deleteAtNpos(35)
     dll.traverse()
