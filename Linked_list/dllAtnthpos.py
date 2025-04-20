@@ -1,22 +1,18 @@
-# Implementation of Delete Node for Doubly Linked List 
+# Implementation for Insert and Delete at nth position 
 '''
-1. Delete at the Beginning: - 
-    TC: - O (1)
-    SC: - O (N)
-2. Delete at the End 
-    TC: - O(N)
-    SC: - O(N)
+1. Insert at nth position 
 '''
+
 class Node: 
     def __init__(self, data):
         self.prev = None
         self.data = data
         self.next = None
 
-class DoublyLinkedList:
+class DoublyLinkedList: 
     def __init__(self):
         self.head = None
-    
+
     def insertAtEnd(self, data):
         newNode = Node(data)
         if (self.head == None):
@@ -30,30 +26,28 @@ class DoublyLinkedList:
             newNode.prev = current
         
         return self.head
-
-    def deleteAtBegin(self):
-        current = self.head.next
-        if (current):
-            self.head = current
-
-    def deleteAtEnd(self):
-        current = self.head
-        previous = None
-        while (current.next):
-            previous = current
-            current = current.next
-        
-        previous.next = None
-        current.prev = None
-        
-        return self.head
     
+    # Inesert At End 
+    def insertAtNpos(self, key, data):
+        newNode = Node(data)
+        # Serach of the node in DLL
+        current = self.head
+        while (not(current == None) and not(current.data == key)):
+            current = current.next
+
+        temp = current.next
+        current.next = newNode
+        newNode.prev = current
+        newNode.next = temp
+
+        return self.head
+        
     def traverse(self):
-        current = self.head 
+        current = self.head
         while (current):
             print(str(current.data) + " --> ", end=" ")
             current = current.next
-
+    
 if __name__ == "__main__":
     dll = DoublyLinkedList()
     dll.insertAtEnd(10)
@@ -63,9 +57,6 @@ if __name__ == "__main__":
     dll.insertAtEnd(50)
     dll.insertAtEnd(60)
     dll.traverse()
-    print("\n")
-    dll.deleteAtBegin()
-    dll.traverse()
-    print("\n")
-    dll.deleteAtEnd()
+    print("\nInsert at nth position: - \n")
+    dll.insertAtNpos(30, 35)
     dll.traverse()
