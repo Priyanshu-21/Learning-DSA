@@ -4,9 +4,8 @@ import math, random, ast, time
 def merge(array, low, mid, high):
     # Left array, Right array to have store the elements
     left = array[:mid]
-    right = array[mid:]
-
-    i = j = k = 0
+    right = array[mid + 1:]
+    i = j = k = 0 
     while (i < len(left) and j < len(right)):
         if (left[i] <= right[j]):
             array[k] = left[i]
@@ -41,13 +40,6 @@ def mergeSort(array, low, high):
     # Conquer: Arrange the array in ascending order 
     merge(array, low, mid, high)
 
-array = [100, 73, 95, 71, 9, 3, 94, 16, 17, 33, 74, 8, 81, 64, 90, 58, 89, 42, 18, 99, 15, 66, 56, 71, 17, 1, 83, 83, 50, 46, 100, 35, 26, 68, 82, 39, 89, 78, 77, 54, 58, 57, 50, 4, 58, 26, 49, 43, 65, 30, 90, 96, 63, 20, 83, 57, 33, 6, 50, 9, 58, 97, 36, 16, 14, 85, 35, 69, 39, 15, 64, 9, 89, 18, 99, 69, 36, 70, 30, 80, 99, 69, 58, 50, 54, 1, 46, 2, 31, 20, 83, 11, 10, 77, 13, 83, 79, 78, 59, 23]
-
-n = len(array)
-mergeSort(array, 0, n)
-print(array)
-
-'''
 array = []
 for i in range(0, 100):
     array.append(random.randint(1, 100))
@@ -68,4 +60,3 @@ print("Time taken by algorithm to sort elements: ", endTime - startTime)
 # Save result in output file 
 with open("./Sorting-Algos/mergeSort_output.txt", "w") as file: 
     file.write(str(array))
-'''
