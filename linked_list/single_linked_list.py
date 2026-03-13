@@ -68,6 +68,61 @@ class SingleLinkedList():
         
         return self.head
 
+    # Delete at begining 
+    def delete_at_begin(self):
+        # Check if head.next is not null 
+        if self.head.next == None:
+            self.head = None # empty linked list 
+        else: 
+            next_node = self.head.next
+            self.head.next = None
+            self.head = next_node 
+            
+        return self.head
+
+    # Delete at end 
+    def delete_at_end(self):
+        # Check if only 1 node is there or not 
+        if self.head.next == None:
+            self.head = None # delete that node and make head == Null 
+        else: 
+            # Traverse through end of node and delete it
+            curr = self.head 
+            while curr.next != None:
+                prev = curr
+                curr = curr.next
+            
+            # change end node next to point to null 
+            prev.next = None
+        
+        return self.head
+
+    # Delete at middle 
+    def delete_at_middle(self):
+        # Only one node is there in the list to delete
+        if self.head.next == None:
+            self.head = None
+        else: 
+            n = 0
+            # Traverse through node (calculate n)
+            curr = self.head
+            while curr.next != None:
+                n = n + 1
+                curr = curr.next 
+            
+            # Calculate middle node. 
+            n = n // 2
+            curr = self.head 
+            while n:
+                prev = curr
+                curr = curr.next 
+                n = n - 1
+            
+            prev.next = curr.next 
+            curr.next = None
+
+            return self.head
+
     # To print values in linkedlist 
     def print_values(self):
         # Traverse through each value of data through temp node 
@@ -90,4 +145,13 @@ if __name__ == "__main__":
     middle_node = single_linked.insert_at_middle(100)
     middle_node = single_linked.insert_at_middle(101)
     middle_node = single_linked.insert_at_middle(102)
+    single_linked.print_values()
+    delete_node = single_linked.delete_at_begin()
+    print("Linked List after deletion at beg:")
+    single_linked.print_values()
+    print("Linked List after deleting at last:")
+    delete_node = single_linked.delete_at_end()
+    single_linked.print_values()
+    print("Linked List after deleting at middle:")
+    delete_node = single_linked.delete_at_middle()
     single_linked.print_values()
