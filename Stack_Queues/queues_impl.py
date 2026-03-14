@@ -18,9 +18,21 @@ class Queue():
         # In queue, dequeue happens for the first element 
         return self.elements.popleft()
     
+    # Method to get head of queue
+    def head(self):
+        return self.elements[0]
+
+    # Method to get tail of queue
+    def tail(self):
+        return self.elements[-1]
+    
+    def __len__(self):
+        return len(self.elements)
+    
     # Need to create next and iter object to traverse through elements 
     def __iter__(self):
-        yield self.elements
+        for element in self.elements:
+            yield element
 
 fifo = Queue()
 # Add elements to the queue 
@@ -28,8 +40,10 @@ fifo.enqueue("First")
 fifo.enqueue("Second")
 fifo.enqueue("Third")
 
-# Let see which values are popped out first and last 
-# Can we iterator through this values ? ans (iterator & Generator)
 for f in fifo: 
     print(f)
 
+print(len(fifo))
+fifo.dequeue()
+print(fifo.head())
+print(fifo.tail())
