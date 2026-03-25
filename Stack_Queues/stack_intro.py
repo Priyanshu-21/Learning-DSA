@@ -31,7 +31,7 @@ class Stack():
         # Base Condition:
         if (middle == 0):
             stack.popleft()
-            return 
+            return stack
         
         # Hypothesis:
         temp = stack.popleft()
