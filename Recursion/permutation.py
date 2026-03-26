@@ -51,31 +51,23 @@ class Permutation:
         # checking if element is numeric
         # TODO: need to work on numeric condition
         if (element.isnumeric()):
-            # Move to next character 
             output = output + element
-            if (len(remain) > 1):
-                element = remain[0]
-                remain = remain[1]
+            self.solve_case_change(remain, output, result)
+        
+        else:
+            # Now, characters are not numberic 
+            # Left Part: Choice to make character lowercase 
+            left_out = output + element.lower()
+            self.solve_case_change(remain, left_out, result)
 
-        # Now, characters are not numberic 
-        # Left Part: Choice to make character lowercase 
-        left_out = output + element.lower()
-        self.solve_case_change(remain, left_out, result)
-
-        # Right Part: Choice to make character uppercase
-        right_out = output + element.upper()
-        self.solve_case_change(remain, right_out, result)
+            # Right Part: Choice to make character uppercase
+            right_out = output + element.upper()
+            self.solve_case_change(remain, right_out, result)
 
         return result
-
-
-
-
 
 
 sol = Permutation()
 print(sol.letter_spaces("ABC"))
 
 print(sol.case_change("a1b2"))
-
-
